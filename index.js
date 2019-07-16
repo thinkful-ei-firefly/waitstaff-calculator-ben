@@ -60,16 +60,20 @@ function handleFormSubmit() {
     tip = getDecimalFromPercent(tip);
     handleCharges({price, tax, tip});
     handleEarnings(price, tip);
+    $('input').val('');
   });
 }
 
-// handleCancelSubmit() {
+function handleCancelSubmit() {
+  $('.cancel').click(event => {
+    event.preventDefault();
+    $('input').val('');
+  });
+}
 
-// }
 
 function handleReset() {
   $('.reset').click(() => {
-    $('input').val('');
     STORE.mealCount = 0;
     STORE.tipTotal = 0;
     STORE.tips.length = 0;
@@ -84,6 +88,7 @@ function handleReset() {
 function waitstaffCalculator() {
   handleFormSubmit();
   handleReset();
+  handleCancelSubmit();
   renderEarnings();
   renderCharges();
 }
