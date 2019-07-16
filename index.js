@@ -8,7 +8,6 @@ const STORE = {
   tips: [],
   avgTip: 0,
   charges: { subtotal: 0, tip: 0, total: 0 },
-  earnings: { total: 0, count: 0, avgTip: 0 },
 };
 
 function getDecimalFromPercent(num) {
@@ -16,21 +15,16 @@ function getDecimalFromPercent(num) {
 }
 
 function renderCharges() {
-  const subtotal = STORE.charges.subtotal.toFixed(2);
-  const tip = STORE.charges.tip.toFixed(2);
-  const total = STORE.charges.total.toFixed(2);
-  $('.subtotal').text(subtotal);
-  $('.tip').text(tip);
-  $('.total').text(total);
+  const {subtotal, tip, total} = STORE.charges;
+  $('.subtotal').text(subtotal.toFixed(2));
+  $('.tip').text(tip.toFixed(2));
+  $('.total').text(total.toFixed(2));
 }
 
 function renderEarnings() {  
-  const tipTotal = STORE.tipTotal.toFixed(2);
-  const mealCount = STORE.mealCount.toFixed(2);
-  const avgTip = STORE.avgTip.toFixed(2);
-  $('.tip-total').text(tipTotal);
-  $('.meal-count').text(mealCount);
-  $('.avg-tip').text(avgTip);
+  $('.tip-total').text(STORE.tipTotal.toFixed(2));
+  $('.meal-count').text(STORE.mealCount);
+  $('.avg-tip').text(STORE.avgTip.toFixed(2));
 }
 
 function handleCharges(meal) {
@@ -56,12 +50,10 @@ function handleFormSubmit() {
   $('form').submit(event => {
     event.preventDefault();
     STORE.mealCount++;
-    let price = $(event.currentTarget).find('[name="price"]').val();
-    let tax = $(event.currentTarget).find('[name="tax"]').val();
-    let tip = $(event.currentTarget).find('[name="tip"]').val();
-    price = parseFloat(price);
-    tax = parseFloat(tax);
-    tip = parseFloat(tip);
+    let {price, tax, tip} = event.currentTarget;
+    price = parseFloat(price.value);
+    tax = parseFloat(tax.value);
+    tip = parseFloat(tip.value);
     tax = getDecimalFromPercent(tax);
     tip = getDecimalFromPercent(tip);
     handleCharges({price, tax, tip});
@@ -71,8 +63,7 @@ function handleFormSubmit() {
 }
 
 function handleCancelSubmit() {
-  $('.cancel').click(event => {
-    event.preventDefault();
+  $('.cancel').click(() => {
     $('input').val('');
   });
 }
@@ -83,9 +74,8 @@ function handleReset() {
     STORE.mealCount = 0;
     STORE.tipTotal = 0;
     STORE.tips.length = 0;
-    STORE.charges = { subtotal: 0, tip: 0, total: 0 };
-    STORE.earnings = { total: 0, count: 0, avgTip: 0 };
     STORE.avgTip = 0;
+    STORE.charges = { subtotal: 0, tip: 0, total: 0 };
     renderCharges();
     renderEarnings();
   });
