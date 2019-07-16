@@ -30,7 +30,7 @@ function renderEarnings() {
 function handleCharges(meal) {
   const {price, tax, tip} = meal;
   const subtotal = (price * tax) + price;
-  const tipAmount = tip * price;
+  const tipAmount = tip * subtotal;
   const total = subtotal + tipAmount;
   STORE.tipTotal += tipAmount;
   STORE.charges.subtotal = subtotal;
