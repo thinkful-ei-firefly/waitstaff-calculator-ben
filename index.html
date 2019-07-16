@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Waitstaff Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <header>
+        <h1>Waitstaff Calculator</h1>
+    </header>
+    <div class="flex-container">
+        <section class="flex-section">
+            <h2>Enter The Meal Details</h2>
+            <form>
+                <label>BASE MEAL PRICE: $</label>
+                <input>
+                <label>TAX RATE: %</label>
+                <input>
+                <label>TIP PERCENTAGE: %</label>
+                <input>
+                <button>SUBMIT</button>
+                <button>CANCEL</button>
+            </form>
+        </section>
+        <div class="flex-box">
+            <section>
+                <h2>Customer Charges</h2>
+                <p>SUBTOTAL: <span></span></p>
+                <p>TIP: <span></span></p>
+                <p>TOTAL: <span></span></p>
+            </section>
+            <section>
+                <h2>My Earnings Info</h2>
+                <p>TIP TOTAL: <span></span></p>
+                <p>MEAL COUNT: <span></span></p>
+                <p>AVERAGE TIP: <span></span></p>
+            </section>
+        </div>
+    </div>
+    <button>RESET</button>
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>

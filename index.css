@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  section {
+    border: 1px solid gray;
+    margin: 0px 20px 20px 15px;
+    padding: 10px;
+  }
+  
+  
+  .flex-section {
+    display: flex;
+    justify-content: center;
+  }
