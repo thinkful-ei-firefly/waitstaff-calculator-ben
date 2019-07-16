@@ -19,32 +19,33 @@
         <section class="flex-section">
             <h2>Enter The Meal Details</h2>
             <form>
-                <label>BASE MEAL PRICE: $</label>
-                <input>
-                <label>TAX RATE: %</label>
-                <input>
-                <label>TIP PERCENTAGE: %</label>
-                <input>
-                <button>SUBMIT</button>
-                <button>CANCEL</button>
+                <fieldset>
+                    <label for="price">BASE MEAL PRICE: $ <input type="number" id="price" name="price" min="0"></label>
+                    <label for="tax">TAX RATE: % <input type="number" id="tax" name="tax" min="0"></label>
+                    <label for="tip">TIP PERCENTAGE: % <input type="number" id="tip" name="tip" min="0"></label>
+                    <button class="submit">SUBMIT</button>
+                    <button class="cancel">CANCEL</button>
+                </fieldset>
             </form>
         </section>
         <div class="flex-box">
             <section>
                 <h2>Customer Charges</h2>
-                <p>SUBTOTAL: <span></span></p>
-                <p>TIP: <span></span></p>
-                <p>TOTAL: <span></span></p>
+                <p>SUBTOTAL: <span class="subtotal"></span></p>
+                <p>TIP: <span class="tip"></span></p>
+                <p>TOTAL: <span class="total"></span></p>
             </section>
             <section>
                 <h2>My Earnings Info</h2>
-                <p>TIP TOTAL: <span></span></p>
-                <p>MEAL COUNT: <span></span></p>
-                <p>AVERAGE TIP: <span></span></p>
+                <p>TIP TOTAL: <span class="tip-total"></span></p>
+                <p>MEAL COUNT: <span class="meal-count"></span></p>
+                <p>AVERAGE TIP: <span class="avg-tip"></span></p>
             </section>
         </div>
     </div>
-    <button>RESET</button>
+    <div class="reset-container">
+        <button class="reset">RESET</button>
+    </div>
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
 </body>

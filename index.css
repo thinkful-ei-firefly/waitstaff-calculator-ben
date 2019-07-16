@@ -6,6 +6,9 @@
     font-family: 'Roboto', sans-serif;
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  h1, h2, .reset-container {
     text-align: center;
   }
   
@@ -17,11 +20,18 @@
   section {
     border: 1px solid gray;
     margin: 0px 20px 20px 15px;
-    padding: 10px;
+    padding: 15px;
   }
-  
-  
-  .flex-section {
+
+  fieldset {
     display: flex;
-    justify-content: center;
+    /* justify-content: space-around; */
+  }
+
+  label, button, input {
+    margin: 10px;
+  }
+
+  input {
+    width: 100%;
   }
