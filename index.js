@@ -16,15 +16,21 @@ function getDecimalFromPercent(num) {
 }
 
 function renderCharges() {
-  $('.subtotal').text(STORE.charges.subtotal);
-  $('.tip').text(STORE.charges.tip);
-  $('.total').text(STORE.charges.total);
+  const subtotal = STORE.charges.subtotal.toFixed(2);
+  const tip = STORE.charges.tip.toFixed(2);
+  const total = STORE.charges.total.toFixed(2);
+  $('.subtotal').text(subtotal);
+  $('.tip').text(tip);
+  $('.total').text(total);
 }
 
 function renderEarnings() {  
-  $('.tip-total').text(STORE.tipTotal);
-  $('.meal-count').text(STORE.mealCount);
-  $('.avg-tip').text(STORE.avgTip);
+  const tipTotal = STORE.tipTotal.toFixed(2);
+  const mealCount = STORE.mealCount.toFixed(2);
+  const avgTip = STORE.avgTip.toFixed(2);
+  $('.tip-total').text(tipTotal);
+  $('.meal-count').text(mealCount);
+  $('.avg-tip').text(avgTip);
 }
 
 function handleCharges(meal) {
