@@ -8,6 +8,15 @@ const STORE = {
   earnings: { total: 0, count: 0, avgTip: 0 },
 };
 
+function handleFormSubmit() {
+  $('form').submit(event => {
+    event.preventDefault();
+    const price = $(event.currentTarget).find('[name="price"]').val();
+    const tax = $(event.currentTarget).find('[name="tax"]').val();
+    const tip = $(event.currentTarget).find('[name="tip"]').val();
+    STORE.meal = {price, tax, tip};
+  });
+}
 
 function renderCharges() {
   $('.subtotal').text('0');
@@ -22,6 +31,7 @@ function renderEarnings() {
 }
 
 function waitstaffCalculator() {
+  handleFormSubmit();
   renderCharges();
   renderEarnings();
 }
