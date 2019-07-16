@@ -8,20 +8,32 @@ const STORE = {
   earnings: { total: 0, count: 0, avgTip: 0 },
 };
 
+function handleCharges(meal) {
+  const {price, tax, tip} = meal;
+  const taxDecimal = tax / 100;
+  const subtotal = (price * taxDecimal) + price;
+  const tipAmount = (tip / 100) * price;
+  const total = subtotal + tipAmount;
+  renderCharges(subtotal, tipAmount, total);
+}
+
 function handleFormSubmit() {
   $('form').submit(event => {
     event.preventDefault();
-    const price = $(event.currentTarget).find('[name="price"]').val();
-    const tax = $(event.currentTarget).find('[name="tax"]').val();
-    const tip = $(event.currentTarget).find('[name="tip"]').val();
-    STORE.meal = {price, tax, tip};
+    let price = $(event.currentTarget).find('[name="price"]').val();
+    let tax = $(event.currentTarget).find('[name="tax"]').val();
+    let tip = $(event.currentTarget).find('[name="tip"]').val();
+    price = parseFloat(price);
+    tax = parseFloat(tax);
+    tip = parseFloat(tip);
+    handleCharges({price, tax, tip});
   });
 }
 
-function renderCharges() {
-  $('.subtotal').text('0');
-  $('.tip').text('0');
-  $('.total').text('0');
+function renderCharges(subtotal, tip, total) {
+  $('.subtotal').text(subtotal);
+  $('.tip').text(tip);
+  $('.total').text(total);
 }
 
 function renderEarnings() {
