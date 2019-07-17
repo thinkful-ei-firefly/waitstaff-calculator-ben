@@ -11,8 +11,12 @@ const STORE = {
 };
 
 function getDecimalFromPercent(num) {
-  return num / 100;
+  return parseFloat(num) / 100;
 }
+
+// const getDecimalFromPercent = (num) => {
+//   return num / 100;
+// };
 
 function renderCharges() {
   const {subtotal, tip, total} = STORE.charges;
@@ -28,9 +32,9 @@ function renderEarnings() {
 }
 
 function handleCharges(meal) {
-  const {price, tax, tip} = meal;
-  const subtotal = (price * tax) + price;
-  const tipAmount = tip * subtotal;
+  const {priceVal, taxVal, tipVal} = meal;
+  const subtotal = (priceVal * taxVal) + priceVal;
+  const tipAmount = tipVal * subtotal;
   const total = subtotal + tipAmount;
   STORE.tipTotal += tipAmount;
   STORE.charges.subtotal = subtotal;
@@ -50,14 +54,12 @@ function handleFormSubmit() {
   $('form').submit(event => {
     event.preventDefault();
     STORE.mealCount++;
-    let {price, tax, tip} = event.currentTarget;
-    price = parseFloat(price.value);
-    tax = parseFloat(tax.value);
-    tip = parseFloat(tip.value);
-    tax = getDecimalFromPercent(tax);
-    tip = getDecimalFromPercent(tip);
-    handleCharges({price, tax, tip});
-    handleEarnings(price, tip);
+    const {price, tax, tip} = event.currentTarget;
+    const priceVal = parseFloat(price.value);
+    const taxVal = getDecimalFromPercent(tax.value);
+    const tipVal = getDecimalFromPercent(tip.value);
+    handleCharges({priceVal, taxVal, tipVal});
+    handleEarnings(priceVal, tipVal);
     $('input').val('');
   });
 }
